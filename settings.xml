@@ -1,4 +1,11 @@
 <settings>
+  <servers>
+     <server>
+       <id>nexus-releases</id>
+       <username>admin</username>
+       <password>admin123</password>
+     </server>
+  </servers>
   <mirrors>
     <mirror>
 	<!-- Proxy Grand Central -->
