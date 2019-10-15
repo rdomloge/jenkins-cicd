@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+        web:
+                image: "localhost:5000/rdomloge/catholicon"
+                container_name: "catholicon"
+                networks:
+                        - catholicon
+                ports:
+                        - "80:8080"
+        seasons:
+                image: "localhost:5000/rdomloge/catholicon-ms-seasons"
+                container_name: "ms-seasons"
+                networks:
+                        - catholicon
+                        - elasticsearch_esnet
+                ports:
+                        - "81:8080"
+        leagues:
+                image: "localhost:5000/rdomloge/catholicon-ms-leagues"
+                container_name: "ms-leagues"
+                networks:
+                        - catholicon
+                ports:
+                        - "82:8080"
+        results:
+                image: "localhost:5000/rdomloge/catholicon-ms-result"
+                container_name: "ms-result"
+                networks:
+                        - catholicon
+                ports:
+                        - "83:8080"
+        db:
+                image: "postgres"
+                container_name: "postgres"
+                networks:
+                        - catholicon
+                ports:
+                        - "5432"
+                environment:
+                        POSTGRES_PASSWORD: ramsay
+                        POSTGRES_USER: ramsay
+                        POSTGRES_DB: catholicon
+                
+                
+                
+networks:
+        catholicon:
+                name: catholicon
+        elasticsearch_esnet:
+                name: elasticsearch_esnet
